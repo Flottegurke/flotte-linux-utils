@@ -16,7 +16,11 @@ Each script has its own `README.md` file that explains:
 - Which Dependencies are required
 
 # Script Overview
-- # [ssh](https://github.com/Flottegurke/flotte-linux-utils/tree/main/ssh)
-    - ## [ssh-key](https://github.com/Flottegurke/flotte-linux-utils/tree/main/ssh/ssh-key)
-        - ### [ssh-keygen-helper](https://github.com/Flottegurke/flotte-linux-utils/tree/main/ssh/ssh-key/ssh-keygen-helper)
+- # [ssh](ssh)
+    - ## [ssh-key](ssh/ssh-key)
+        - ### [ssh-keygen-helper](ssh/ssh-key/ssh-keygen-helper)
           Helps with the creation of SSH-keys
+- # [file](file)
+    - ## [file-sorting](file/file-sorting)
+        - ### [sort-files-by-extension](file/file-sorting/sort-files-by-extension)
+          Recursively sorts files by their extension into directories

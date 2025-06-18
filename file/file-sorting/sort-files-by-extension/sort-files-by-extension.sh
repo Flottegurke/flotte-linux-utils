@@ -1,6 +1,6 @@
 #!/bin/bash
-set -euo pipefail
-shopt -s nullglob
+
+shopt -s nullglob globstar
 
 base_dir=$(pwd)
 
@@ -26,7 +26,6 @@ fi
 echo "📦 Starting sort of $total files..."
 echo "⏳ Progress will be shown every 5 seconds."
 echo
-scasc
 sorted=0
 interval_sorted=0
 interval_start=$(date +%s)

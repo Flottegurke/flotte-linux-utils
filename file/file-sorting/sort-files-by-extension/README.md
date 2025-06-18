@@ -10,10 +10,12 @@ The script automatically creates the directories if they do not already exist an
 ## How to use
 To use the script, just execute it, after installing all necessary dependencies.
 
+
+### Screenshot
+![SSH Key Generation](../../../assets/sscreenshot-sort-files-by-extension.png)
+
 > [!CAUTION]
 > Make sure to run the script in the directory you want to sort, as it will move files from the current directory and all subdirectories.
 
 ## Dependencies
 - Bash
-- coreutils
-- findutils

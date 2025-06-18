@@ -26,7 +26,6 @@ fi
 echo "📦 Starting sort of $total files..."
 echo "⏳ Progress will be shown every 5 seconds."
 echo
-scasc
 sorted=0
 interval_sorted=0
 interval_start=$(date +%s)

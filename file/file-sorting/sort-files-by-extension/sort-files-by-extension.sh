@@ -1,6 +1,6 @@
 #!/bin/bash
-
-shopt -s nullglob globstar
+set -euo pipefail
+shopt -s nullglob
 
 base_dir=$(pwd)
 

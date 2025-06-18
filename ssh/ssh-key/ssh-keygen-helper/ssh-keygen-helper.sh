@@ -1,7 +1,17 @@
 #!/bin/bash
 set -euo pipefail
-
 shopt -s nullglob
+
+if ! command -v git &>/dev/null; then
+    echo "❌ git is not installed. (on arch: install it with: sudo pacman -S git)"
+    exit 1
+fi
+
+if ! command -v ssh-keygen &>/dev/null; then
+    echo "❌ ssh-keygen is not installed. (on arch: install it with: sudo pacman -S openssh)"
+    exit 1
+fi
+
 
 KEY_DIR="$HOME/.ssh-keys/keys"
 mkdir -p "$KEY_DIR"

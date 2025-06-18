@@ -15,5 +15,3 @@ To use the script, just execute it, after installing all necessary dependencies.
 
 ## Dependencies
 - Bash
-- coreutils
-- findutils

@@ -10,6 +10,8 @@ SSH-keys are detected by searching in `~/.ssh-keys/keys/` for `.pub` fies
 > [!TIP]
 > Keys generated with [ssh-keygen-helper](../ssh-keygen-helper) will be automatically stored there
 
+### Screenshot
+![SSH Key Generation](../../../assets/screenshot-ssh-keypush-helper.png)
 ## How to use
 To use the script, just execute it, after installing all necessary dependencies.
 

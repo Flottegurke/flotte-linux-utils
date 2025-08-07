@@ -26,3 +26,6 @@ Each script has its own `README.md` file that explains:
     - ## [file-sorting](file/file-sorting)
         - ### [sort-files-by-extension](file/file-sorting/sort-files-by-extension)
           Recursively sorts files by their extension into directories
+- # [system](system)
+    - ### [update-helper](system/update-helper)
+        Helps with updating the system packages

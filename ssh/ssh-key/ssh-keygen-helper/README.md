@@ -22,7 +22,9 @@ The script also automatically commits the keys to the local (automatically creat
 
 ## Dependencies
 - bash
+- mkdir
 - ssh-keygen
+- chmod
 - git
 
 ---

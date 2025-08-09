@@ -23,8 +23,14 @@ SSH-keys are detected by searching in `~/.ssh-keys/keys/` for `.pub` fies
 
 ## Dependencies
 - bash
+- awk
 - fzf
+- ssh
 - sshpass
+- mkdir
+- chmod
+- cat
+- echo
  
 ## Screenshot
 ![SSH Key Generation](../../../assets/screenshot-ssh-keypush-helper.png)

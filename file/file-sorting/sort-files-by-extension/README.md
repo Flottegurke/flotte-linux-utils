@@ -19,6 +19,13 @@ The script automatically creates the directories if they do not already exist an
 
 ## Dependencies
 - bash
+- pwd
+- find
+- basename
+- mkdir
+- mv
+- date
+- echo
 
 ---
 ## Screenshot

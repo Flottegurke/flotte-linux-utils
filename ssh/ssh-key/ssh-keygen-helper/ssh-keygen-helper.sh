@@ -2,16 +2,21 @@
 set -euo pipefail
 shopt -s nullglob
 
-if ! command -v git &>/dev/null; then
-    echo "❌ git is not installed. (on arch: install it with: sudo pacman -S git)"
+
+# --- Dependency check ---
+MISSING_DEPS=()
+REQUIRED_CMDS=("mkdir" "ssh-keygen" "chmod" "git")
+for cmd in "${REQUIRED_CMDS[@]}"; do
+    if ! command -v "$cmd" &>/dev/null; then
+        MISSING_DEPS+=("$cmd")
+    fi
+done
+if ((${#MISSING_DEPS[@]} > 0)); then
+    echo "❌ Missing required dependencies: ${MISSING_DEPS[*]}"
+    echo "Please install them before running this script."
     exit 1
 fi
-
-if ! command -v ssh-keygen &>/dev/null; then
-    echo "❌ ssh-keygen is not installed. (on arch: install it with: sudo pacman -S openssh)"
-    exit 1
-fi
-
+echo
 
 KEY_DIR="$HOME/.ssh-keys/keys"
 mkdir -p "$KEY_DIR"

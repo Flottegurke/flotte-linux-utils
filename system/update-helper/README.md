@@ -17,8 +17,11 @@ Then it checks, if a dotfiles repo is located in `~/.config`, and if it is, trie
 4. Choose whether the system should reboot
 
 ## Dependencies
+- bash
+- systemctl
 - pacman
 - yay (optional)
+- git
 
 ---
 ### Screenshot

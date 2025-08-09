@@ -1,7 +1,27 @@
 #!/bin/bash
 set -euo pipefail
 
+# --- Dependency check ---
+MISSING_DEPS=()
+REQUIRED_CMDS=("pacman" "git" "systemctl")
+OPTIONAL_CMDS=("yay")
+for cmd in "${REQUIRED_CMDS[@]}"; do
+    if ! command -v "$cmd" &>/dev/null; then
+        MISSING_DEPS+=("$cmd")
+    fi
+done
+if ((${#MISSING_DEPS[@]} > 0)); then
+    echo "❌ Missing required dependencies: ${MISSING_DEPS[*]}"
+    echo "Please install them before running this script."
+    exit 1
+fi
+for cmd in "${OPTIONAL_CMDS[@]}"; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "ℹ️  Optional dependency missing: $cmd"
+    fi
+done
 echo
+
 read -rp "📦 Do you want to update all system packages? [y/N] " CONFIRM
 if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
     echo "Skipping system update..."

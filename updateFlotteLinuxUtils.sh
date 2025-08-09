@@ -2,6 +2,22 @@
 set -euo pipefail
 shopt -s nullglob
 
+# --- Dependency check ---
+MISSING_DEPS=()
+REQUIRED_CMDS=("pwd" "basename" "dirname" "echo" "find" "sudo" "ln")
+for cmd in "${REQUIRED_CMDS[@]}"; do
+    if ! command -v "$cmd" &>/dev/null; then
+        MISSING_DEPS+=("$cmd")
+    fi
+done
+if ((${#MISSING_DEPS[@]} > 0)); then
+    echo "❌ Missing required dependencies: ${MISSING_DEPS[*]}"
+    echo "Please install them before running this script."
+    exit 1
+fi
+echo
+
+
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEST_DIR="/usr/local/bin"
 SCRIPT_NAME="$(basename "${BASH_SOURCE[0]}")"

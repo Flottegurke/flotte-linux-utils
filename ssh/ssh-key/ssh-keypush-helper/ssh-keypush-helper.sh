@@ -2,17 +2,21 @@
 set -euo pipefail
 shopt -s nullglob
 
-if ! command -v sshpass &>/dev/null; then
-    echo "❌ sshpass is not installed. (on arch: install it with: sudo pacman -S sshpass)"
+# --- Dependency check ---
+MISSING_DEPS=()
+REQUIRED_CMDS=("awk" "fzf" "ssh" "sshpass" "mkdir" "chmod" "cat" "echo")
+for cmd in "${REQUIRED_CMDS[@]}"; do
+    if ! command -v "$cmd" &>/dev/null; then
+        MISSING_DEPS+=("$cmd")
+    fi
+done
+if ((${#MISSING_DEPS[@]} > 0)); then
+    echo "❌ Missing required dependencies: ${MISSING_DEPS[*]}"
+    echo "Please install them before running this script."
     exit 1
 fi
-if ! command -v fzf &>/dev/null; then
-    echo "❌ fzf is not installed. (on arch: install it with: sudo pacman -S fzf)"
-    exit 1
-fi
-
-
 echo
+
 echo "📡 Scanning available SSH config entries..."
 HOSTS=$(awk '/^Host / { for (i=2; i<=NF; i++) print $i }' ~/.ssh/config)
 if [[ -z "$HOSTS" ]]; then

@@ -3,6 +3,21 @@
 set -euo pipefail
 shopt -s nullglob globstar
 
+# --- Dependency check ---
+MISSING_DEPS=()
+REQUIRED_CMDS=("pwd" "find" "basename" "mkdir" "mv" "date" "echo")
+for cmd in "${REQUIRED_CMDS[@]}"; do
+    if ! command -v "$cmd" &>/dev/null; then
+        MISSING_DEPS+=("$cmd")
+    fi
+done
+if ((${#MISSING_DEPS[@]} > 0)); then
+    echo "❌ Missing required dependencies: ${MISSING_DEPS[*]}"
+    echo "Please install them before running this script."
+    exit 1
+fi
+echo
+
 base_dir=$(pwd)
 
 echo "🔍 Scanning files..."

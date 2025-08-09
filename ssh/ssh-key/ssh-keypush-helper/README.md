@@ -4,20 +4,22 @@ This script helps with adding local SSH-keys to the `.ssh/authorized_keys` file 
 ## Functionality
 Servers are detected by searching in the local `.ssh/config` file.
 > [!TIP]
-> To manage the `.ssh/config`, a tool like [ssh-tui](https://github.com/Flottegurke/ssh-tui) might be useful.
+> To manage the `.ssh/config` file, a tool like [ssh-tui](https://github.com/Flottegurke/ssh-tui) might be useful.
 
 SSH-keys are detected by searching in `~/.ssh-keys/keys/` for `.pub` fies
 > [!TIP]
 > Keys generated with [ssh-keygen-helper](../ssh-keygen-helper) will be automatically stored there
 
+## Setup
+1. Install all [Dependencies](#Dependencies)
+2. If not already done: Execute the [`updateFlotteLinuxUtils.sh`](../../../updateFlotteLinuxUtils.sh) script.
 
 ## How to use
-1. Install all [Dependencies](#Dependencies)
-2. Execute the script:
+1. Start the script:
     ```shell
-    ./ssh-keypush-helper.sh
+    ssh-keypush-helper
     ```
-3. Select the server to which to add the SSH-key
+3. Select the target server
 4. Select which SSH-key to add
 5. Enter password of server
 

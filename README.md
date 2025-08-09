@@ -1,19 +1,19 @@
 # flotte-linux-utils
 This is a collection of helpful linux scripts, which streamline some tedious tasks.
 
-## Usage
+## Setup
 1. Clone the repo into `~/.config`:
     ```shell
     cd ~/.config && git clone git@github.com:flottegurke/flotte-linux-utils.git
     ```
-    > [!WARNING]
-    > The repo needs to get cloned into the `~/.config` directory with the name `flotte-linux-utils` in order for the [update-helper Script](./system/update-helper/update-helper.sh) to work.
+> [!WARNING]
+> The repo needs to get cloned into the `~/.config` directory with the name `flotte-linux-utils` in order for the [update-helper Script](./system/update-helper/update-helper.sh) to work.
 2. Execute `updateFlotteLinuxUtils.sh`:
     ```shell
     ./updateFlotteLinuxUtils.sh
     ```
-    > [!TIP]
-    > After you have executed `updateFlotteLinuxUtils.sh` once, you can just run `update-helper` (from anywhere) to update this repo (and your system packages). 
+> [!TIP]
+> After you have executed `updateFlotteLinuxUtils.sh` once, you can just run `update-helper` (from anywhere) to update this repo (and your system packages). 
 
 ## Structure
 Scripts are grouped by topic to keep things organized.
@@ -37,4 +37,4 @@ Each script has its own `README.md` file that explains:
           Recursively sorts files by their extension into directories
 - ## [system](system)
     - **[update-helper](system/update-helper)**
-        Helps with updating the system packages
+        Helps with updating the system packages and other repos

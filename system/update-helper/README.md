@@ -20,5 +20,6 @@ Then it checks, if a dotfiles repo is located in `~/.config`, and if it is, trie
 - pacman
 - yay (optional)
 
-## Screenshot
+---
+### Screenshot
 ![SSH Key Generation](../../assets/screenshot-update-helper.png)

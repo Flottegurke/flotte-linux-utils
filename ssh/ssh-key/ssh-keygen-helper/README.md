@@ -25,5 +25,6 @@ The script also automatically commits the keys to the local (automatically creat
 - ssh-keygen
 - git
 
+---
 ## Screenshot
 ![SSH Key Generation](../../../assets/screenshot-ssh-keygen-helper.png)

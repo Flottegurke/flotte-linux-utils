@@ -20,5 +20,6 @@ The script automatically creates the directories if they do not already exist an
 ## Dependencies
 - bash
 
+---
 ## Screenshot
 ![SSH Key Generation](../../../assets/sscreenshot-sort-files-by-extension.png)

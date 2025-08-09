@@ -20,8 +20,8 @@ Then it checks, if a dotfiles repo is located in `~/.config`, and if it is, trie
 - bash
 - systemctl
 - pacman
-- yay (optional)
 - git
+- yay (optional)
 
 ---
 ### Screenshot

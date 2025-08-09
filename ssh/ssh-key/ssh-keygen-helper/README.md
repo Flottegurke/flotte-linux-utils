@@ -9,16 +9,19 @@ The script also automatically commits the keys to the local (automatically creat
 > [!CAUTION]
 > Private keys are also commited to the repo, it is therefore strongly advised to not push the git repo to a server.
 
-## How to use
+## Setup
 1. Install all [Dependencies](#Dependencies)
-2. Execute the script:
+2. If not already done: Execute the [`updateFlotteLinuxUtils.sh`](../../../updateFlotteLinuxUtils.sh) script.  
+
+## How to use
+1. Start the script:
     ```shell
-    ./ssh-keygen-helper.sh
+    ssh-keygen-helper
     ```
-3. Enter device name
-4. Enter use case of ssh-key
-5. Enter Email or identifier
-6. (optional) Enter passphrase
+2. Enter (friendly) device name
+3. Enter use-case of ssh-key
+4. Enter Email or identifier tag
+5. (optional) Enter passphrase
 
 ## Dependencies
 - bash

@@ -2,10 +2,24 @@
 set -euo pipefail
 
 echo
-read -rp "📦 Do you want to update the system? [y/N] " CONFIRM
+read -rp "📦 Do you want to update all system packages? [y/N] " CONFIRM
 if [[ ! "$CONFIRM" =~ ^[Yy]$ ]]; then
-    echo "❌ Update canceled."
-    exit 0
+    echo "Skipping system update..."
+else
+
+    # --- System update ---
+    echo
+    echo "🔧 Checking for yay..."
+    if command -v yay &>/dev/null; then
+        echo "📦 Updating AUR and system packages with yay..."
+        yay -Syu --noconfirm
+    else
+        echo "⚠️  yay is not installed. Falling back to pacman only."
+        echo "   (tip: install yay with: sudo pacman -S yay)"
+        echo
+        echo "📦 Updating system packages with pacman..."
+        sudo pacman -Syu --noconfirm
+    fi
 fi
 
 # --- Dotfiles update ---
@@ -27,18 +41,25 @@ else
     echo "ℹ️  No dotfiles git repo found in ~/.config/dotfiles."
 fi
 
-# --- System update ---
+# --- flotte-linux-utils update ---
 echo
-echo "🔧 Checking for yay..."
-if command -v yay &>/dev/null; then
-    echo "📦 Updating AUR and system packages with yay..."
-    yay -Syu --noconfirm
+UTILS_DIR="$HOME/.config/flotte-linux-utils"
+if [[ -d "$UTILS_DIR/.git" ]]; then
+    echo "🔄 Updating flotte-linux-utils repository in ~/.config/flotte-linux-utils..."
+    git -C "$UTILS_DIR" pull
+
+    UTILS_UPDATE_SCRIPT="$UTILS_DIR/updateFlotteLinuxUtils.sh"
+    if [[ -x "$UTILS_UPDATE_SCRIPT" ]]; then
+        echo "🚀 Running updateFlotteLinuxUtils.sh..."
+        "$UTILS_UPDATE_SCRIPT"
+    else
+        echo "⚠️  $UTILS_UPDATE_SCRIPT not found or not executable."
+        exit 1
+    fi
 else
-    echo "⚠️  yay is not installed. Falling back to pacman only."
-    echo "   (tip: install yay with: sudo pacman -S yay)"
-    echo
-    echo "📦 Updating system packages with pacman..."
-    sudo pacman -Syu --noconfirm
+    echo "ℹ️  ❌ flotte-linux-utils git repo not found in ~/.config/flotte-linux-utils."
+    echo "ℹ️  please remove the current flotte-linux-utils repo and clone it again in the ~/.config directory (cd ~/.config && git clone git@github.com:flottegurke/flotte-linux-utils.git)"
+    exit 1
 fi
 
 # --- Reboot prompt ---

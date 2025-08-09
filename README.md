@@ -15,17 +15,18 @@ Each script has its own `README.md` file that explains:
 - How to use it
 - Which Dependencies are required
 
-# Script Overview
-- # [ssh](ssh)
-    - ## [ssh-key](ssh/ssh-key)
-        - ### [ssh-keygen-helper](ssh/ssh-key/ssh-keygen-helper)
+---
+# Overview
+- ## [ssh](ssh)
+    - ### [ssh-key](ssh/ssh-key)
+        - **[ssh-keygen-helper](ssh/ssh-key/ssh-keygen-helper)**
           Helps with the creation of SSH-keys
-        - ### [ssh-key-pusher](ssh/ssh-key/ssh-keypush-helper)
+        - **[ssh-key-pusher](ssh/ssh-key/ssh-keypush-helper)**
           Helps with adding SSH-keys to servers based on the `.ssh/config` file
-- # [file](file)
-    - ## [file-sorting](file/file-sorting)
-        - ### [sort-files-by-extension](file/file-sorting/sort-files-by-extension)
+- ## [file](file)
+    - ### [file-sorting](file/file-sorting)
+        - **[sort-files-by-extension](file/file-sorting/sort-files-by-extension)**
           Recursively sorts files by their extension into directories
-- # [system](system)
-    - ### [update-helper](system/update-helper)
+- ## [system](system)
+    - **[update-helper](system/update-helper)**
         Helps with updating the system packages

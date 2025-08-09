@@ -1,7 +1,7 @@
 # ssh-key-pusher
-## Functionality
 This script helps with adding local SSH-keys to the `.ssh/authorized_keys` file of servers.
 
+## Functionality
 Servers are detected by searching in the local `.ssh/config` file.
 > [!TIP]
 > To manage the `.ssh/config`, a tool like [ssh-tui](https://github.com/Flottegurke/ssh-tui) might be useful.
@@ -10,16 +10,21 @@ SSH-keys are detected by searching in `~/.ssh-keys/keys/` for `.pub` fies
 > [!TIP]
 > Keys generated with [ssh-keygen-helper](../ssh-keygen-helper) will be automatically stored there
 
-### Screenshot
-![SSH Key Generation](../../../assets/screenshot-ssh-keypush-helper.png)
-## How to use
-To use the script, just execute it, after installing all necessary dependencies.
 
-1. select the server to which to add the SSH-key
-2. select which SSH-key to add
-3. enter password of server
+## How to use
+1. Install all [Dependencies](#Dependencies)
+2. Execute the script:
+    ```shell
+    ./ssh-keypush-helper.sh
+    ```
+3. Select the server to which to add the SSH-key
+4. Select which SSH-key to add
+5. Enter password of server
 
 ## Dependencies
-- Bash
+- bash
 - fzf
 - sshpass
+ 
+## Screenshot
+![SSH Key Generation](../../../assets/screenshot-ssh-keypush-helper.png)

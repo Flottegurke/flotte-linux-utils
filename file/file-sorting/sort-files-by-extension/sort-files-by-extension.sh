@@ -40,7 +40,6 @@ if [[ "$confirm" != "y" && "$confirm" != "yes" ]]; then
 fi
 
 echo "📦 Starting sort of $total files..."
-echo "⏳ Progress will be shown every 5 seconds."
 echo
 sorted=0
 interval_sorted=0

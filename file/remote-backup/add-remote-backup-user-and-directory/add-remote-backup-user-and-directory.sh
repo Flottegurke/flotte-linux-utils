@@ -17,15 +17,25 @@ if ((${#MISSING_DEPS[@]} > 0)); then
 fi
 echo
 
-
 BACKUP_USER="backup"
 BACKUP_HOME="/remote/backups"
 
+# --- Ensure root-owned chroot directory ---
+if [ ! -d "$BACKUP_HOME" ]; then
+    echo "Creating chroot base directory $BACKUP_HOME..."
+    sudo mkdir -p "$BACKUP_HOME"
+fi
+echo "Setting $BACKUP_HOME ownership to root:root and permissions 755..."
+sudo chown root:root "$BACKUP_HOME"
+sudo chmod 755 "$BACKUP_HOME"
+
+# --- Create group if missing ---
 if ! getent group "$BACKUP_USER" >/dev/null; then
     echo "Creating group $BACKUP_USER..."
     sudo addgroup --system "$BACKUP_USER"
 fi
 
+# --- Create or update backup user ---
 if ! id "$BACKUP_USER" &>/dev/null; then
     echo "Creating backup user..."
     sudo adduser --system --shell /usr/sbin/nologin --home "$BACKUP_HOME/$BACKUP_USER" --ingroup "$BACKUP_USER" "$BACKUP_USER"
@@ -34,8 +44,10 @@ else
     sudo usermod -g "$BACKUP_USER" "$BACKUP_USER"
 fi
 
+# --- Ask for folders interactively ---
 read -p "Enter backup folder names (space-separated): " -a FOLDERS
 
+# --- Create backup folders and set permissions ---
 for folder in "${FOLDERS[@]}"; do
     FULL_PATH="$BACKUP_HOME/$folder"
     if [ ! -d "$FULL_PATH" ]; then
@@ -48,6 +60,18 @@ for folder in "${FOLDERS[@]}"; do
     sudo chmod 700 "$FULL_PATH"
 done
 
+# --- Set up .ssh folder for authorized keys ---
+SSH_DIR="$BACKUP_HOME/$BACKUP_USER/.ssh"
+if [ ! -d "$SSH_DIR" ]; then
+    echo "Creating .ssh directory for backup user..."
+    sudo mkdir -p "$SSH_DIR"
+fi
+sudo chown -R "$BACKUP_USER:$BACKUP_USER" "$SSH_DIR"
+sudo chmod 700 "$SSH_DIR"
+echo "You can now place public keys into $SSH_DIR/authorized_keys"
+echo "Example: sudo nano $SSH_DIR/authorized_keys (paste keys) and chmod 600"
+
+# --- Configure SSH restrictions ---
 SSHD_CONF="/etc/ssh/sshd_config"
 MATCH_BLOCK="Match User $BACKUP_USER
     ForceCommand internal-sftp

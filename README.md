@@ -39,5 +39,5 @@ Each script has its own `README.md` file that explains:
     - **[update-helper](system/update-helper)**
         Helps with updating the system packages and other repos
     - ### **[firewall](system/firewall)**
-        - **[update-cloudflare-ips-using-ufw](system/firewall/update-cloudflare-ips-using-ufw)**
+        - **[update-cloudflare-ips-in-ufw](system/firewall/update-cloudflare-ips-in-ufw)**
             Updates ufw (firewall) rules to only accept incoming traffic from cloudflare IPs

@@ -35,6 +35,9 @@ Each script has its own `README.md` file that explains:
     - ### [file-sorting](file/file-sorting)
         - **[sort-files-by-extension](file/file-sorting/sort-files-by-extension)**
           Recursively sorts files by their extension into directories
+    - ### [remote-backup](file/remote-backup)
+        - **[add-remote-backup-user-and-directory](file/remote-backup/add-remote-backup-user-and-directory)**
+          Adds a user with a directory which can be used by other services to push remote backups to this server
 - ## [system](system)
     - **[update-helper](system/update-helper)**
         Helps with updating the system packages and other repos

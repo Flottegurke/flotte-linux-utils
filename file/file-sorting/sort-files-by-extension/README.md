@@ -28,4 +28,4 @@ The script automatically creates the directories if they do not already exist an
 
 ---
 ## Screenshot
-![SSH Key Generation](../../../assets/sscreenshot-sort-files-by-extension.png)
+![SSH Key Generation](../../../assets/screenshot-sort-files-by-extension.png)
